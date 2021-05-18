@@ -6,20 +6,16 @@
 */
 
 variable "your_ip" {
-    default = "YOURIP/32"
+    default = "{YOURIP}/32"
 }
 
+variable "token"    {
+    description = "Digital Ocean API Token"
+    default = "{YOUR TOKEN}"
+}
 variable "region"  {
     default = "us-central1" #IOWA
 }   
-
-variable "zone" {
-    default = "us-central1-a" #IOWA A
-}   
-
-variable "service_account_email" {
-    default = "{SERVICE_ACCOUNT}@{PROJECT_NAME}.iam.gserviceaccount.com"
-}
 
 variable "project"  {
     default = "{PROJECT_NAME}"
