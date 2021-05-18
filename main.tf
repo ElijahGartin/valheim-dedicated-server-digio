@@ -4,8 +4,8 @@
 * AUTHOR: Elijah Gartin [elijah.gartin@gmail.com]
 * DATE: 2021 MAY 13
 */
-
-/* BUILD NETWORK */
+/*
+# BUILD NETWORK
 module "network" {
     source  = "./modules/network"
     region  = var.region
@@ -17,7 +17,7 @@ module "securitygroups" {
     vpc             = module.network.vpc
 }
 
-/* BUILD SERVER */
+# BUILD SERVER
 module "server" {
     source                  = "./modules/dedicated-server"
     instance_type           = "e2-standard-2"
@@ -29,3 +29,4 @@ module "server" {
     disk-image-size         = 30
     user_data               = file("./scripts/bootstrap.sh")
 }
+*/
