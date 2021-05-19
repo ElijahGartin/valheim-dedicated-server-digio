@@ -30,19 +30,16 @@ module "securitygroups" {
     source    = "./modules/security-groups"
     token     = var.token    
     your_ip   = var.your_ip
-    #droplet_ids = module.server.server_id
+    droplet_ids = module.server.server_id
 }
-/*
+
 # BUILD SERVER
 module "server" {
-    source                  = "./modules/dedicated-server"
-    instance_type           = "e2-standard-2"
-    zone                    = var.zone
-    vpc                     = module.network.vpc
-    subnet_id               = module.network.network_subnet_id
-    service_account_email   = var.service_account_email
-    disk-image-type         = "pd-standard"
-    disk-image-size         = 30
-    user_data               = file("./scripts/bootstrap.sh")
+    source          = "./modules/dedicated-server"
+    token           = var.token
+    region          = var.region
+    instance_type   = "s-2vcpu-4gb" #test s-1vcpu-1gb
+    vpc_uuid        = module.network.vpc
+    ssh_keys        = file("~/.ssh/id_rsa.pub")
+    user_data       = file("./scripts/bootstrap.sh")
 }
-*/

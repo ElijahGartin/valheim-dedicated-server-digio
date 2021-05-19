@@ -2,14 +2,12 @@
 * PROJECT: Valheim Dedicated Server
 * FILE: DEDICATED-SERVER :: Vars.tf
 * AUTHOR: Elijah Gartin [elijah.gartin@gmail.com]
-* DATE: 2021 MAY 05
+* DATE: 2021 MAY 19
 */
 # server
+variable "token"            {}
+variable "region"           {}
 variable "instance_type"    {}
-variable "zone"      {}
-variable "disk-image-type"  {}
-variable "disk-image-size"  {}
-variable "service_account_email" {}
-variable "vpc"  {}
-variable "subnet_id"        {}
-variable "user_data" {}
+variable "vpc_uuid"         {}
+variable "ssh_keys"         {}
+variable "user_data"        {}

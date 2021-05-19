@@ -19,7 +19,7 @@ provider "digitalocean" {
 resource "digitalocean_firewall" "valheim_firewall" {
   name = "valheimfirewall"
 
-  #droplet_ids = [var.droplet_ids]
+  droplet_ids = [var.droplet_ids]
 
   inbound_rule {
     protocol         = "tcp"
@@ -63,16 +63,12 @@ resource "digitalocean_firewall" "valheim_firewall" {
   }    
   outbound_rule {
     protocol              = "tcp"
-    port_range            = "53"
+    port_range            = "1-65535"
     destination_addresses = ["0.0.0.0/0", "::/0"]
   }
   outbound_rule {
     protocol              = "udp"
-    port_range            = "53"
-    destination_addresses = ["0.0.0.0/0", "::/0"]
-  }
-  outbound_rule {
-    protocol              = "icmp"
+    port_range            = "1-65535"
     destination_addresses = ["0.0.0.0/0", "::/0"]
   }
 }
