@@ -2,15 +2,30 @@
 * PROJECT: Valheim Dedicated Server
 * FILE: ROOT :: Main.tf
 * AUTHOR: Elijah Gartin [elijah.gartin@gmail.com]
-* DATE: 2021 MAY 13
+* DATE: 2021 MAY 18
 */
-/*
+terraform {
+  required_providers {
+    digitalocean = {
+      source = "digitalocean/digitalocean"
+      version = ">= 2.8.0"
+    }
+  }
+}
+provider "digitalocean" {
+  token = var.token
+}
+
 # BUILD NETWORK
 module "network" {
     source  = "./modules/network"
+    vpcname = "valheimvpc"
+    ip_range = "10.10.10.0/24"
     region  = var.region
+    token   = var.token
 }
 
+/*
 module "securitygroups" {
     source          = "./modules/security-groups"
     your_ip         = var.your_ip

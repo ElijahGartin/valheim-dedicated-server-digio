@@ -2,21 +2,23 @@
 * PROJECT: Valheim Dedicated Server
 * FILE: NETWORK :: Main.tf
 * AUTHOR: Elijah Gartin [elijah.gartin@gmail.com]
-* DATE: 2021 MAY 11
+* DATE: 2021 MAY 18
 */
-
-#RANGE 10.10.x.x VNET NETWORK
-resource "google_compute_network" "valheim-vpc" {
-  name                    = "valheim-vnet"
-  description             = "valheim-vpc"
-  auto_create_subnetworks = false
-  #address_space       = ["10.10.0.0/16"]
+terraform {
+  required_providers {
+    digitalocean = {
+      source = "digitalocean/digitalocean"
+      version = ">= 2.8.0"
+    }
+  }
+}
+provider "digitalocean" {
+  token = var.token
 }
 
-#10 Subnet
-resource "google_compute_subnetwork" "subnet" {
-  name                    = "valheim-subnet"
-  ip_cidr_range           = "10.10.10.0/24"
-  region                  = var.region
-  network                 = google_compute_network.valheim-vpc.id
+#RANGE 10.10.10.x VPC NETWORK
+resource "digitalocean_vpc" "valheimvpc" {
+  name     = var.vpcname
+  region   = var.region
+  ip_range = var.ip_range
 }
