@@ -11,10 +11,10 @@ variable "your_ip" {
 
 variable "token"    {
     description = "Digital Ocean API Token"
-    default = "{YOUR TOKEN}"
+    default = "{YOURTOKEN}"
 }
 variable "region"  {
-    default = "us-central1" #IOWA
+    default = "sfo3"
 }   
 
 variable "project"  {
