@@ -6,12 +6,12 @@
 */
 
 variable "your_ip" {
-    default = "{YOURIP}/32"
+    default = "{YOUR_IP}/32"
 }
 
 variable "token"    {
     description = "Digital Ocean API Token"
-    default = "{YOURTOKEN}"
+    default = "{YOUR_TOKEN}"
 }
 variable "region"  {
     default = "sfo3"
