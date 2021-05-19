@@ -20,7 +20,7 @@ I do have some ambitions to try and create something like this for all the major
 
   - [Digital Ocean Account](https://m.do.co/c/9d2217a2725c)
      - [Digital Ocean API Token](https://cloud.digitalocean.com/account/api/tokens)
-  - [Terraform](https://www.terraform.io/downloads.html) (Tested on version 0.14.5)
+  - [Terraform](https://www.terraform.io/downloads.html) (Tested on version 0.15.3)
 
 ## References
 
