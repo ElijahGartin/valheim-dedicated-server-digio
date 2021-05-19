@@ -18,20 +18,21 @@ provider "digitalocean" {
 
 # BUILD NETWORK
 module "network" {
-    source  = "./modules/network"
-    vpcname = "valheimvpc"
-    ip_range = "10.10.10.0/24"
-    region  = var.region
-    token   = var.token
+    source    = "./modules/network"
+    token     = var.token
+    vpcname   = "valheimvpc"
+    ip_range  = "10.10.10.0/24"
+    region    = var.region
+
 }
 
-/*
 module "securitygroups" {
-    source          = "./modules/security-groups"
-    your_ip         = var.your_ip
-    vpc             = module.network.vpc
+    source    = "./modules/security-groups"
+    token     = var.token    
+    your_ip   = var.your_ip
+    #droplet_ids = module.server.server_id
 }
-
+/*
 # BUILD SERVER
 module "server" {
     source                  = "./modules/dedicated-server"
