@@ -5,8 +5,6 @@
 * DATE: 2021 MAY 19
 */
 
-variable "token"    {}
-variable "your_ip"  {}
-variable "droplet_ids"   {
-    default = ""
-}
+variable "token"        {}
+variable "your_ip"      {}
+variable "droplet_ids"  {}

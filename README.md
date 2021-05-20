@@ -2,7 +2,7 @@
 
 ## Terraform
 
-### 2021 MAY 18
+### 2021 MAY 20
 
 ## Disclaimer/Legal
 
@@ -33,22 +33,22 @@ I do have some ambitions to try and create something like this for all the major
 
 ## Steps
 
-You'll be editing some lines in the `ROOT:vars.tf` file for the local variables between line 8 and 25. Steps described below. Mileage may vary depending on what data center you try to push to.
+You'll be editing some lines in the `ROOT:vars.tf` file for the local variables between line 8 and 18. Steps described below. Mileage may vary depending on what data center you try to push to.
 
 You'll notice some of the taxonomy in referring to files such as `ROOT:filename`.  Root will be the root of the folder structure. Any modules will change the name of `ROOT` to `NETWORK` for example where there is another grouping of similarily named files.  This is a Terraform thing that some people may not be familiar with.
 
 1. `ROOT:vars.tf`: Use `curl https://ipinfo.io/ip` to obtain your IP and input it in the locals variable for `your_ip` in the this file. This is essential for you to be able to SSH from your box.  If you intend to use a bastion host, make sure you're putting in the ip for the bastion host.
-    - `your_ip`
-    - `region`
-    - `project`
 
+2. `ROOT:vars.tf`: Generate an API Token in Digital Ocean and then edit the vars file to input your API Token file after generating it for your account. 
+  - [Digital Ocean API Token Dashboard](https://cloud.digitalocean.com/account/api/tokens)
 
-2. `ROOT:provider.tf` Edit file to input your API Token file after generating it for your account. 
+3. `ROOT:vars.tf`: Choose your Digital Ocean Region
+  - [Digital Ocean Region Names](https://docs.digitalocean.com/products/platform/availability-matrix/)
    
-3. Create a public key pair and update variable to pull the id_rsa.pub file through the `keyname` variable. This is so you can ssh to your virtual machine.
+4. `ROOT:main.tf`: Create a public key pair and update variable to pull the public key file through the `keyname` variable. This is so you can ssh to your virtual machine. Change line 43, if your ssh key name IS NOT `id_rsa.pub` in the `~/.ssh` folder.
     - [Terraform DIGIO SSH Doc](https://registry.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/ssh_key)
 
-4. Once you've saved all your changes, open a terminal/command prompt to the location of this repository and run the following commands in succession:
+5. Once you've saved all your changes, open a terminal/command prompt to the location of this repository and run the following commands in succession:
     - `terraform init`
     - `terraform apply`
 
@@ -66,7 +66,7 @@ You'll notice some of the taxonomy in referring to files such as `ROOT:filename`
 
 ## Network Schema
 
-10.10.10.0/24 - Main Subnet (Server will build here as 10.10.10.69 (Nice))
+10.10.10.0/24 - Main Subnet (Be careful for subnet conflicts in Digital Ocean. If you have this issue, change line 24 in `ROOT:main.tf` to provision in a non-conflicting CIDR range.)
 
 The server will currently build as a `s-2vcpu-4gb` (2vCPU 4GB RAM). Depending on the size of the world and how many users, you may need to adjust the size. With Terraform, it should be as simple as updating the line of code in `ROOT:main.tf` line 41 with the new sizing and re-running `terraform apply`. Make sure you stop the server and backup before doing it, just in case.
 
