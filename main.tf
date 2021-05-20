@@ -2,7 +2,7 @@
 * PROJECT: Valheim Dedicated Server
 * FILE: ROOT :: Main.tf
 * AUTHOR: Elijah Gartin [elijah.gartin@gmail.com]
-* DATE: 2021 MAY 18
+* DATE: 2021 MAY 20
 */
 terraform {
   required_providers {
@@ -38,7 +38,7 @@ module "server" {
     source          = "./modules/dedicated-server"
     token           = var.token
     region          = var.region
-    instance_type   = "s-2vcpu-4gb" #test s-1vcpu-1gb
+    instance_type   = "s-2vcpu-4gb" #for testing use:  `s-1vcpu-1gb`
     vpc_uuid        = module.network.vpc
     ssh_keys        = file("~/.ssh/id_rsa.pub")
     user_data       = file("./scripts/bootstrap.sh")
