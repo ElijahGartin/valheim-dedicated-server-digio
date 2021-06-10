@@ -2,7 +2,7 @@
 * PROJECT: Valheim Dedicated Server
 * FILE: DEDICATED-SERVER :: Main.tf
 * AUTHOR: Elijah Gartin [elijah.gartin@gmail.com]
-* DATE: 2021 MAY 19
+* DATE: 2021 JUNE 10
 */
 terraform {
   required_providers {
@@ -23,7 +23,7 @@ resource "digitalocean_ssh_key" "key" {
 
 resource "digitalocean_droplet" "server" {
   name      = "valheim-server"
-  image     = "ubuntu-18-04-x64"
+  image     = "ubuntu-20-04-x64"
   size      = var.instance_type
   region    = var.region
   vpc_uuid  = var.vpc_uuid

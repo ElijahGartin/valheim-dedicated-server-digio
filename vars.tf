@@ -2,7 +2,7 @@
 * PROJECT: Valheim Dedicated Server
 * FILE: ROOT :: Vars.tf
 * AUTHOR: Elijah Gartin [elijah.gartin@gmail.com]
-* DATE: 2021 MAY 20
+* DATE: 2021 JUN 10
 */
 #curl https://ipinfo.io/ip
 variable "your_ip" {
@@ -12,10 +12,11 @@ variable "your_ip" {
 #https://cloud.digitalocean.com/account/api/tokens
 variable "token"    {
     description = "Digital Ocean API Token."
-    default = "{YOUR_TOKEN}"
+    default = "{YOUR_API_TOKEN}"
 }
 #https://docs.digitalocean.com/products/platform/availability-matrix/
 variable "region"  {
-    description = "Digital Ocean Datacenter Code. E.g. SFO3."
-    default = "{YOUR_REGION}"
+    description = "Digital Ocean Datacenter Code. E.g. sfo3."
+    #make sure to use all lowercase
+    default = "nyc3"
 }    

@@ -29,7 +29,7 @@ All critiques are welcome via the [Github Project](https://github.com/users/Elij
 
   - [Digital Ocean Account](https://m.do.co/c/9d2217a2725c)
      - [Digital Ocean API Token](https://cloud.digitalocean.com/account/api/tokens)
-  - [Terraform](https://www.terraform.io/downloads.html) (Tested on version 0.15.3)
+  - [Terraform](https://www.terraform.io/downloads.html) (Tested on version 1.0.0)
 
 ## References
 
