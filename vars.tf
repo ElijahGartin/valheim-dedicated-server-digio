@@ -18,5 +18,5 @@ variable "token"    {
 variable "region"  {
     description = "Digital Ocean Datacenter Code. E.g. sfo3."
     #make sure to use all lowercase
-    default = "nyc3"
+    default = "{YOUR_REGION}"
 }    
